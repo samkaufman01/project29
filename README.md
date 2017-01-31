@@ -2,7 +2,6 @@
 
 #  Materials Discovery from Data Mining to Design Novel Semiconductor Quantum Dots for Optoelectronics
 
-# Written by Sam Kaufman (samkaufman01@gmail.com), Spring 2017
 # MSE 395, Senior design
 # Group members: Sam Kaufman, Grace Pakeltis, Bonan Shen, Dawei Shi
 # Advisors: Prof. Moonsub Shim, Prof. Andre Schleife
