@@ -260,7 +260,7 @@ def DatabaseGap(IDNum): #Charge Neutrality from materialsproject
 
 IDList=np.genfromtxt('idlist.txt',dtype=None)
 
-API_Key='HbQtI8zsBEk7R91T'
+API_Key='fdhGQJEPevF5MsiD'
 mp=MPRester(API_Key)
 
 MetalThreshold=-0.3 #threshold gap to be considered a metal and retained
