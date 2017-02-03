@@ -67,8 +67,10 @@ def BuildRegressor(mod_dir):
     
     #tf.contrib.layers.embedding_column(symmetrygroup, dimension=10),
     deep_columns=[tf.contrib.layers.embedding_column(symmetrygroup, dimension=10),
-                  s,p,d,f,enegdiff,enegavg,totv,totpol,avgpol,diffpol,totaffin,avgaffin,diffaffin,totionen,avgionen,diffionen,totmass,avgmass,diffmass,redmass,totvdw,avgvdw,diffvdw]
-    wide_columns=[s,p,d,f,enegdiff,enegavg,totv,totpol,avgpol,diffpol,totaffin,avgaffin,diffaffin,totionen,avgionen,diffionen,totmass,avgmass,diffmass,redmass,totvdw,avgvdw,diffvdw]
+                  s,p,d,f,enegdiff,enegavg,totv,totpol,avgpol,diffpol,totaffin,avgaffin,
+                  diffaffin,totionen,avgionen,diffionen,totmass,avgmass,diffmass,redmass,totvdw,avgvdw,diffvdw]
+    wide_columns=[s,p,d,f,enegdiff,enegavg,totv,totpol,avgpol,diffpol,totaffin,avgaffin,
+                  diffaffin,totionen,avgionen,diffionen,totmass,avgmass,diffmass,redmass,totvdw,avgvdw,diffvdw]
 
     
     model=tf.contrib.learn.DNNLinearCombinedRegressor(linear_feature_columns=wide_columns,
