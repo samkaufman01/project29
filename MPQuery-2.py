@@ -1,6 +1,6 @@
 '''
 Created on Jan 27, 2017
-
+This file was used to aquire the data from the API, and recorded the task_id && band_gap && the lattice constant on the data array.
 @author: ethan
 '''
 from pymatgen.matproj.rest import MPRester, MPRestError
