@@ -21,14 +21,16 @@ from mendeleev import element
 
 NobleConfigs=[0,2,10,18,36,54,86] #number of electrons in noble metal configuration
 
-
+'''
+determine whether the value belong to the float range.
+'''
 def isfloat(value):
     try:
         float(value)
         return True
     except ValueError:
         return False
-
+# output the array list of separated test name from the data
 def NameAnalyzer(NameToTest):
     NameToTest= [ y for y in list(itertools.chain(*[re.split(r'\"(.*)\"', x) 
         for x in re.split(r'\((.*)\)', NameToTest)])) 
@@ -42,8 +44,8 @@ def NameAnalyzer(NameToTest):
         else:
             #print NameToTest[j]
             ParenSeparatedName.append(NameToTest[j])
-    
-    SeparatedName=[]
+   
+_____SeparatedName=[]
     for j in range(0,len(ParenSeparatedName)):
         TempSegment=[a for a in re.split(r'([A-Z][a-z]*)', ParenSeparatedName[j]) if a]
         multiplier=1.0
@@ -64,6 +66,8 @@ def NameAnalyzer(NameToTest):
                         SeparatedName.append(str(multiplier))
     return(SeparatedName)
 
+# output the electronegativity difference
+# output the average electronegativity cost ?? I may be a little bit confused about this
 def CostFunction(CostName):
     ENegC=[]
     ENegC2=0
@@ -191,7 +195,7 @@ def CountElectrons(mpid):
         ndTot+=nd*multiplicity
         nfTot+=nf*multiplicity
     return nsTot, npTot, ndTot, nfTot
-
+# determine the material strucutre according to the group number
 def SymmGroupFinder(GroupNum):
     if 1<=GroupNum<=2:
         Group='Triclinic'
