@@ -1,0 +1,110 @@
+import pandas as pd
+import numpy as np
+from scipy import stats
+
+
+
+small_data = pd.read_csv("Modulus.csv", header=0, sep = ',')
+big_data = pd.read_csv("AllDescriptors.csv", header=0, sep = ',')
+formulars = small_data["Chemical Formula"].tolist()
+#print formulars
+#print len(formulars)
+res = big_data
+res = res[res['Formula'].isin(formulars)]
+dicti = {}
+for  index,row in small_data.iterrows():
+	f = row['Chemical Formula'] 
+	print f
+	v =  row['Measurement value']
+	dicti.update({f:v})
+
+def f(row):
+	if row['Formula'] in dicti.keys():
+		val = dicti[row['Formula']]
+	else:
+		val = -1
+	return val
+
+res['Measurement value'] = res.apply(f,axis=1)
+print res
+
+Measurement = res['Measurement value'].tolist()
+EnergyPerAtom = res['EnergyPerAtom'].tolist()
+Volume= res['Volume'].tolist()
+Density= res['Density'].tolist()
+NSites= res['NSites'].tolist()
+Symmetry= res['Symmetry'].tolist()
+FormationEnergy= res['FormationEnergy'].tolist()
+EHull= res['EHull'].tolist()
+a= res['a'].tolist()
+b= res['b'].tolist()
+c= res['c'].tolist()
+s= res['s'].tolist()
+p= res['p'].tolist()
+d= res['d'].tolist()
+f= res['f'].tolist()
+ENegDiff= res['ENegDiff'].tolist()
+ENegAvg= res['ENegAvg'].tolist()
+TotVol= res['TotVol'].tolist()
+TotPolar= res['TotPolar'].tolist()
+AvgPolar= res['AvgPolar'].tolist()
+DiffPolar= res['DiffPolar'].tolist()
+TotAffin= res['TotAffin'].tolist()
+AvgAffin= res['AvgAffin'].tolist()
+DiffAffin= res['DiffAffin'].tolist()
+TotIonEn= res['TotIonEn'].tolist()
+AvgIonEn= res['AvgIonEn'].tolist()
+DiffIonEn= res['DiffIonEn'].tolist()
+TotMass= res['TotMass'].tolist()
+AvgMass= res['AvgMass'].tolist()
+DiffMass= res['DiffMass'].tolist()
+RedMass= res['RedMass'].tolist()
+TotVDW= res['TotVDW'].tolist()
+AvgVDW= res['AvgVDW'].tolist()
+DiffVDW= res['DiffVDW'].tolist()
+GapVASP= res['Gap(VASP)'].tolist()
+spear = []
+
+spear.append(stats.spearmanr(EnergyPerAtom, Measurement))
+spear.append(stats.spearmanr(Volume, Measurement))
+spear.append(stats.spearmanr(Density, Measurement))
+spear.append(stats.spearmanr(NSites, Measurement))
+spear.append(stats.spearmanr(Symmetry, Measurement))
+spear.append(stats.spearmanr(FormationEnergy, Measurement))
+spear.append(stats.spearmanr(EHull, Measurement))
+spear.append(stats.spearmanr(a, Measurement))
+spear.append(stats.spearmanr(b, Measurement))
+spear.append(stats.spearmanr(c, Measurement))
+spear.append(stats.spearmanr(s, Measurement))
+spear.append(stats.spearmanr(p, Measurement))
+spear.append(stats.spearmanr(d, Measurement))
+spear.append(stats.spearmanr(f, Measurement))
+spear.append(stats.spearmanr(ENegDiff, Measurement))
+spear.append(stats.spearmanr(ENegAvg, Measurement))
+spear.append(stats.spearmanr(TotVol, Measurement))
+spear.append(stats.spearmanr(TotPolar, Measurement))
+spear.append(stats.spearmanr(AvgPolar, Measurement))
+spear.append(stats.spearmanr(DiffAffin, Measurement))
+spear.append(stats.spearmanr(TotIonEn, Measurement))
+spear.append(stats.spearmanr(AvgIonEn, Measurement))
+spear.append(stats.spearmanr(DiffIonEn, Measurement))
+spear.append(stats.spearmanr(TotMass, Measurement))
+spear.append(stats.spearmanr(AvgMass, Measurement))
+spear.append(stats.spearmanr(DiffMass, Measurement))
+spear.append(stats.spearmanr(RedMass, Measurement))
+spear.append(stats.spearmanr(TotVDW, Measurement))
+spear.append(stats.spearmanr(AvgVDW, Measurement))
+spear.append(stats.spearmanr(DiffVDW, Measurement))
+spear.append(stats.spearmanr(GapVASP, Measurement))
+print spear
+
+#moduls =  small_data['Measurement value']
+#print moduls
+# i =0
+# for index, row in big_data.iterrows():
+# 	if row['Formula'] not in formulars:
+# 		res.drop(res.index[i], inplace = True)
+# 		i+=1
+# 		#big_data.drop(big_data.index[index], inplace = True)
+# res.drop_duplicates(inplace = True)
+# print res= res['Measurement value'].tolist()= res['Measurement value'].tolist()
