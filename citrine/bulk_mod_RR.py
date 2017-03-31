@@ -5,7 +5,7 @@ from sklearn import linear_model, cross_validation, metrics, ensemble
 
 # Training file containing band gaps extracted from Materials Project
 # created in previous blog post and linked here
-trainFile = open("bandgapDFT.csv","r").readlines()
+trainFile = open("experimental_data_no_header.csv","r").readlines()
 
 # Input: pymatgen Composition object
 # Output: length-100 vector representing any chemical formula
@@ -34,7 +34,7 @@ for line in trainFile:
 # Establish baseline accuracy by "guessing the average" of the band gap set
 # A good model should never do worse.
 baselineError = mean(abs(mean(bandgaps) - bandgaps))
-print("The MAE of always guessing the average band gap is: " + str(round(baselineError, 3)) + " eV")
+print("The MAE of always guessing the average Bulk Modulus is: " + str(round(baselineError, 3)) + " GPa")
 
 
 # Train linear ridge regression model using naive feature set
@@ -47,8 +47,8 @@ cv = cross_validation.ShuffleSplit(len(bandgaps),\
 scores = cross_validation.cross_val_score(linear, naiveFeatures,\
             bandgaps, cv=cv, scoring='neg_mean_absolute_error')
 
-print("The MAE of the linear ridge regression band gap model using the naive feature set is: "\
-    + str(round(abs(mean(scores)), 3)) + " eV")
+print("The MAE of the linear ridge regression Bulk Modulus model using the naive feature set is: "\
+    + str(round(abs(mean(scores)), 3)) + " GPa")
 
 # Let's see which features are most important for the linear model
 
